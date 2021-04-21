@@ -1,3 +1,9 @@
+## ипломный проект Skillbox по курсу «JavaScript с нуля»
+
+**Тема дипломной работы:** создание веб-приложения для просмотра фотографий (упрощенный аналог веб-интерфейса Instagram).
+
+***
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
