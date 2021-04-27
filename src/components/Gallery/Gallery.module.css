@@ -1,0 +1,105 @@
+.gallery {
+  display: flex;
+  margin: 0 auto 50px;
+  width: 1200px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+}
+
+.row:nth-child(2) {
+  margin: 0 20px;
+}
+
+.galleryItem {
+  position: relative;
+}
+
+.galleryItem:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  transition: 0.5s ease;
+}
+
+.author {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: none;
+}
+
+.authorImage {
+  margin-right: 8px;
+  border-radius: 100%;
+  max-width: 40px;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-decoration: none;
+  color: #fff;
+}
+
+.authorName {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.authorName:hover {
+  opacity: 1;
+}
+
+.date {
+  font-size: 12px;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.date:hover {
+  opacity: 1;
+}
+
+.like {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: none;
+  color: #fff;
+}
+
+.galleryItem:hover .image {
+  -webkit-filter: brightness(60%);
+  filter: brightness(60%);
+}
+
+.galleryItem:hover .author {
+  display: flex;
+}
+
+.galleryItem:hover .like {
+  display: block;
+}
+
+.more {
+  display: block;
+  margin: 0 auto 50px;
+  border: 2px solid #efe0ad;
+  padding: 10px 15px;
+  font-size: 18px;
+  background: transparent;
+}
+
+.more:hover {
+  background: #efe0ad;
+  cursor: pointer;
+}
