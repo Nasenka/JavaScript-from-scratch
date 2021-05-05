@@ -1,12 +1,19 @@
 .header {
   margin-bottom: 50px;
   padding: 15px 0;
-  background: #efe0ad;
+  box-shadow: 0 0 10px #000;
+  color: #eeaf4b;
+  background: #000;
 }
 
 .container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin: 0 auto;
   width: 1200px;
+}
+
+.logo {
+  max-width: 200px;
 }

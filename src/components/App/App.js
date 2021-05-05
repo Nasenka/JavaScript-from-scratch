@@ -10,7 +10,7 @@ class App extends React.PureComponent {
       <>
         <header className={style.header}>
           <div className={style.container}>
-            <div>Логотип</div>
+            <img alt="Сырная лента" className={style.logo} src="/logo.png" />
             <div>Вход</div>
           </div>
         </header>
