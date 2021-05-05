@@ -11,8 +11,8 @@
   width: 100%;
 }
 
-.row:nth-child(2) {
-  margin: 0 20px;
+.row:not(:last-child) {
+  margin-right: 20px;
 }
 
 .galleryItem {
@@ -78,7 +78,6 @@
 }
 
 .galleryItem:hover .image {
-  -webkit-filter: brightness(60%);
   filter: brightness(60%);
 }
 
@@ -93,13 +92,16 @@
 .more {
   display: block;
   margin: 0 auto 50px;
-  border: 2px solid #efe0ad;
+  border: 2px solid #eeaf4b;
   padding: 10px 15px;
   font-size: 18px;
+  color: #eeaf4b;
   background: transparent;
+  transition: background, border 0.5s ease;
 }
 
 .more:hover {
-  background: #efe0ad;
+  border-color: #000;
+  background: #000;
   cursor: pointer;
 }
