@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { fetchGallery } from '../../actions/gallery';
+
 import style from './Gallery.module.css';
 import GalleryItem from './GalleryItem';
 
@@ -10,18 +12,51 @@ class Gallery extends React.PureComponent {
     gallery: PropTypes.arrayOf(
       PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          src: PropTypes.string.isRequired,
+          alt_description: PropTypes.string.isRequired,
+          created_at: PropTypes.string.isRequired,
+          id: PropTypes.string.isRequired,
+          likes: PropTypes.number.isRequired,
+          urls: PropTypes.shape({
+            regular: PropTypes.string.isRequired,
+          }).isRequired,
+          user: PropTypes.shape({
+            links: PropTypes.shape({
+              html: PropTypes.string.isRequired,
+            }).isRequired,
+            name: PropTypes.string.isRequired,
+            profile_image: PropTypes.shape({
+              medium: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
         }).isRequired,
       ).isRequired,
     ).isRequired,
+
+    fetchGallery: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    const { fetchGallery } = this.props;
+
+    fetchGallery();
+  }
 
   renderGallery(column) {
     const { gallery } = this.props;
 
     return gallery[column].map(photo => {
-      return <GalleryItem key={photo.id} src={photo.src} />;
+      return (
+        <GalleryItem
+          key={photo.id}
+          alt={photo.alt_description}
+          created={photo.created_at}
+          likes={photo.likes}
+          src={photo.urls.regular}
+          user={photo.user.name}
+          userImage={photo.user.profile_image.medium}
+          userLink={photo.user.links.html}
+        />
+      );
     });
   }
 
@@ -61,4 +96,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Gallery);
+const mapDispatchToProps = {
+  fetchGallery,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
