@@ -6,31 +6,33 @@ import style from './Gallery.module.css';
 class GalleryItem extends React.PureComponent {
   static propTypes = {
     src: PropTypes.string.isRequired,
+    created: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    user: PropTypes.string.isRequired,
+    userImage: PropTypes.string.isRequired,
+    userLink: PropTypes.string.isRequired,
   };
 
   render() {
-    const { src } = this.props;
+    const { alt, created, src, likes, user, userImage, userLink } = this.props;
 
     return (
       <div className={style.galleryItem}>
-        <img alt="Сыр" className={style.image} src={src} />
+        <img alt={alt} className={style.image} src={src} />
         <div className={style.author}>
-          <img
-            alt="Patrick Jansen"
-            className={style.authorImage}
-            src="https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png"
-          />
+          <img alt={user} className={style.authorImage} src={userImage} />
           <a
             className={style.authorInfo}
-            href="https://unsplash.com/@syrenko"
+            href={userLink}
             rel="noreferrer"
             target="_blank"
           >
-            <span className={style.authorName}>Patrick Jansen</span>
-            <span className={style.date}>Published on April 21, 2021</span>
+            <span className={style.authorName}>{user}</span>
+            <span className={style.date}>{created}</span>
           </a>
         </div>
-        <span className={style.like}>15</span>
+        <span className={style.like}>{likes}</span>
       </div>
     );
   }

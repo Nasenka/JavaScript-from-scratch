@@ -37,6 +37,7 @@ module.exports = {
     ],
     'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     'no-param-reassign': ['error', { props: false }],
+    'no-shadow': 'off',
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
