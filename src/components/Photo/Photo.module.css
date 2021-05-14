@@ -1,38 +1,21 @@
-.gallery {
-  display: flex;
+.photo {
   margin-bottom: 50px;
 }
 
-.row {
+.photo img {
+  width: 100%;
+  height: auto;
+}
+
+.imageInfo {
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  width: 100%;
-}
-
-.row:not(:last-child) {
-  margin-right: 20px;
-}
-
-.galleryItem {
-  position: relative;
-}
-
-.galleryItem:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.image {
-  display: block;
-  width: 100%;
-  transition: 0.5s ease;
+  justify-content: space-between;
 }
 
 .author {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  display: none;
+  display: flex;
+  margin-bottom: 30px;
+  text-decoration: none;
 }
 
 .authorImage {
@@ -45,8 +28,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  text-decoration: none;
-  color: #fff;
 }
 
 .authorName {
@@ -68,14 +49,6 @@
   opacity: 1;
 }
 
-.like {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  display: none;
-  color: #fff;
-}
-
 .like::before {
   content: "";
   display: inline-block;
@@ -83,7 +56,7 @@
   margin-right: 5px;
   width: 16px;
   height: 16px;
-  background: url("../../assets/image/dislike.svg") no-repeat;
+  background: url("../../assets/image/dislikeBlack.svg") no-repeat;
   background-size: contain;
 }
 
@@ -91,21 +64,8 @@
   cursor: pointer;
 }
 
-.galleryItem:hover .image {
-  filter: brightness(60%);
-}
-
-.galleryItem:hover .author {
-  display: flex;
-}
-
-.galleryItem:hover .like {
+.back {
   display: block;
-}
-
-.more {
-  display: block;
-  margin: 0 auto 50px;
   border: 2px solid #eeaf4b;
   padding: 10px 15px;
   font-size: 18px;
@@ -114,7 +74,7 @@
   transition: background, border 0.5s ease;
 }
 
-.more:hover {
+.back:hover {
   border-color: #000;
   background: #000;
   cursor: pointer;

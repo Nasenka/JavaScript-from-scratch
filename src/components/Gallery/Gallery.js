@@ -50,6 +50,7 @@ class Gallery extends React.PureComponent {
           key={photo.id}
           alt={photo.alt_description}
           created={photo.created_at}
+          id={photo.id}
           likes={photo.likes}
           src={photo.urls.regular}
           user={photo.user.name}
