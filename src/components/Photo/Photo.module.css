@@ -1,27 +1,37 @@
 .photo {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 50px;
 }
 
-.photo img {
-  width: 100%;
-  height: auto;
+.photoContainer {
+  flex-grow: 1;
+  margin-right: 50px;
 }
 
-.imageInfo {
-  display: flex;
-  justify-content: space-between;
+.image {
+  display: block;
+  margin: 0 auto;
+  max-height: 600px;
+}
+
+.photoInfo {
+  flex-basis: 250px;
 }
 
 .author {
   display: flex;
-  margin-bottom: 30px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(134, 167, 205, 0.3);
+  padding-bottom: 15px;
   text-decoration: none;
 }
 
 .authorImage {
   margin-right: 8px;
   border-radius: 100%;
-  max-width: 40px;
+  max-width: 42px;
 }
 
 .authorInfo {
@@ -31,32 +41,35 @@
 }
 
 .authorName {
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
+  font-size: 18px;
+  color: #3a669c;
 }
 
 .authorName:hover {
-  opacity: 1;
+  color: #eeaf4b;
 }
 
-.date {
-  font-size: 12px;
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
+.totalPhotos {
+  font-size: 14px;
+  color: #767676;
 }
 
-.date:hover {
-  opacity: 1;
+.like {
+  display: flex;
+  align-items: center;
+  border: none;
+  font-size: 22px;
+  color: #3a669c;
+  background: none;
 }
 
 .like::before {
   content: "";
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   margin-right: 5px;
-  width: 16px;
-  height: 16px;
-  background: url("../../assets/image/dislikeBlack.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+  background: url("../../assets/image/dislike1.svg") no-repeat;
   background-size: contain;
 }
 
@@ -64,18 +77,65 @@
   cursor: pointer;
 }
 
+.details {
+  margin: 15px 0;
+  border-top: 1px solid rgba(134, 167, 205, 0.3);
+  padding-top: 15px;
+}
+
+.details p {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.details b {
+  margin-right: 5px;
+}
+
+.tags {
+  margin: 0;
+  padding: 0;
+}
+
+.tagItem {
+  display: inline-block;
+  margin: 3px;
+  border-radius: 15px;
+  padding: 5px 10px;
+  box-shadow: 0 0 3px rgba(19, 56, 101, 0.3);
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  background: #3e5775;
+}
+
+.relatedTitle {
+  font-weight: normal;
+}
+
 .back {
-  display: block;
-  border: 2px solid #eeaf4b;
-  padding: 10px 15px;
-  font-size: 18px;
-  color: #eeaf4b;
-  background: transparent;
-  transition: background, border 0.5s ease;
+  position: absolute;
+  left: 50px;
+  top: 124px;
+  border: none;
+  border-radius: 100%;
+  padding: 20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 0 0 10px rgba(19, 56, 101, 0.5);
+  background: url("../../assets/image/backArrow.svg") no-repeat center center;
+  background-size: 25px;
+  transition: background 0.5s ease;
 }
 
 .back:hover {
-  border-color: #000;
-  background: #000;
+  background-color: #3a669c;
   cursor: pointer;
+}
+
+.relatedCollections {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 50px;
 }
