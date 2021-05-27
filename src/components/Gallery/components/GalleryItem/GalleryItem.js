@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import style from './Gallery.module.css';
+import style from './GalleryItem.module.css';
 
 class GalleryItem extends React.PureComponent {
   static propTypes = {
-    alt: PropTypes.string.isRequired,
+    alt: PropTypes.string,
     created: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
@@ -14,6 +14,10 @@ class GalleryItem extends React.PureComponent {
     user: PropTypes.string.isRequired,
     userImage: PropTypes.string.isRequired,
     userLink: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    alt: 'Сыр',
   };
 
   render() {
@@ -31,14 +35,16 @@ class GalleryItem extends React.PureComponent {
     const creationDate = new Date(created);
 
     return (
-      <Link className={style.galleryItem} to={`/photos/${id}`}>
-        <img alt={alt} className={style.image} src={src} />
+      <div className={style.galleryItem}>
+        <Link to={`/photos/${id}`}>
+          <img alt={alt} className={style.image} src={src} />
+        </Link>
         <div className={style.author}>
           <img alt={user} className={style.authorImage} src={userImage} />
           <a
             className={style.authorInfo}
             href={userLink}
-            rel="noreferrer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <span className={style.authorName}>{user}</span>
@@ -48,7 +54,7 @@ class GalleryItem extends React.PureComponent {
           </a>
         </div>
         <span className={style.like}>{likes}</span>
-      </Link>
+      </div>
     );
   }
 }

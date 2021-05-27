@@ -1,0 +1,88 @@
+.galleryItem {
+  position: relative;
+}
+
+.galleryItem:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  transition: 0.5s ease;
+}
+
+.author {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: none;
+}
+
+.authorImage {
+  margin-right: 8px;
+  border-radius: 100%;
+  max-width: 40px;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-decoration: none;
+  color: #fff;
+}
+
+.authorName {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.authorName:hover {
+  opacity: 1;
+}
+
+.date {
+  font-size: 12px;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.date:hover {
+  opacity: 1;
+}
+
+.like {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: none;
+  color: #fff;
+}
+
+.like::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  background: url("../../../../assets/image/dislike.svg") no-repeat;
+  background-size: contain;
+}
+
+.like:hover {
+  cursor: pointer;
+}
+
+.galleryItem:hover .image {
+  filter: brightness(60%);
+}
+
+.galleryItem:hover .author {
+  display: flex;
+}
+
+.galleryItem:hover .like {
+  display: block;
+}

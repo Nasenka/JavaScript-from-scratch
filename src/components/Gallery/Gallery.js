@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import { fetchGallery } from '../../actions/gallery';
 
 import style from './Gallery.module.css';
-import GalleryItem from './GalleryItem';
+import GalleryItem from './components/GalleryItem';
 
 class Gallery extends React.PureComponent {
   static propTypes = {
     gallery: PropTypes.arrayOf(
       PropTypes.arrayOf(
         PropTypes.shape({
-          alt_description: PropTypes.string.isRequired,
+          alt_description: PropTypes.string,
           created_at: PropTypes.string.isRequired,
           id: PropTypes.string.isRequired,
           likes: PropTypes.number.isRequired,
