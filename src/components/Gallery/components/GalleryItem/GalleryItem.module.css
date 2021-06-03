@@ -33,6 +33,10 @@
   color: #fff;
 }
 
+.authorInfo:hover {
+  color: #fff;
+}
+
 .authorName {
   opacity: 0.8;
   transition: opacity 0.5s ease;
@@ -57,7 +61,11 @@
   right: 10px;
   bottom: 10px;
   display: none;
+  border: none;
   color: #fff;
+  background: none;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
 }
 
 .like::before {
@@ -67,12 +75,22 @@
   margin-right: 5px;
   width: 16px;
   height: 16px;
-  background: url("../../../../assets/image/dislike.svg") no-repeat;
+  background: url("../../../../assets/image/unlike.svg") no-repeat;
   background-size: contain;
 }
 
 .like:hover {
+  opacity: 1;
   cursor: pointer;
+}
+
+.likeActive {
+  color: #eeaf4b;
+  opacity: 1;
+}
+
+.likeActive::before {
+  background-image: url("../../../../assets/image/like.svg");
 }
 
 .galleryItem:hover .image {

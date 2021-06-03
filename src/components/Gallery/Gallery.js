@@ -15,10 +15,11 @@ class Gallery extends React.PureComponent {
           alt_description: PropTypes.string,
           created_at: PropTypes.string.isRequired,
           id: PropTypes.string.isRequired,
+          liked_by_user: PropTypes.bool.isRequired,
           likes: PropTypes.number.isRequired,
           urls: PropTypes.shape({
-            regular: PropTypes.string.isRequired,
-          }).isRequired,
+            regular: PropTypes.string,
+          }),
           user: PropTypes.shape({
             links: PropTypes.shape({
               html: PropTypes.string.isRequired,
@@ -51,6 +52,7 @@ class Gallery extends React.PureComponent {
           alt={photo.alt_description}
           created={photo.created_at}
           id={photo.id}
+          likedByUser={photo.liked_by_user}
           likes={photo.likes}
           src={photo.urls.regular}
           user={photo.user.name}

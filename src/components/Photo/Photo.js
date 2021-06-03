@@ -134,7 +134,6 @@ class Photo extends React.PureComponent {
         );
       });
 
-      // eslint-disable-next-line react/prop-types
       return <ul className={style.tags}>{photoTags}</ul>;
     }
 
