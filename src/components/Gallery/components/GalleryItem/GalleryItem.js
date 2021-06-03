@@ -1,6 +1,10 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { fetchLike, fetchUnlike } from '../../../../actions/gallery';
 
 import style from './GalleryItem.module.css';
 
@@ -8,7 +12,10 @@ class GalleryItem extends React.PureComponent {
   static propTypes = {
     alt: PropTypes.string,
     created: PropTypes.string.isRequired,
+    fetchLike: PropTypes.func.isRequired,
+    fetchUnlike: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
+    likedByUser: PropTypes.bool.isRequired,
     likes: PropTypes.number.isRequired,
     src: PropTypes.string.isRequired,
     user: PropTypes.string.isRequired,
@@ -20,11 +27,22 @@ class GalleryItem extends React.PureComponent {
     alt: 'Сыр',
   };
 
+  handleClick = async () => {
+    const { id, fetchLike, fetchUnlike, likedByUser } = this.props;
+
+    if (likedByUser) {
+      fetchUnlike(id);
+    } else {
+      fetchLike(id);
+    }
+  };
+
   render() {
     const {
       alt,
       created,
       id,
+      likedByUser,
       likes,
       src,
       user,
@@ -53,10 +71,23 @@ class GalleryItem extends React.PureComponent {
             </span>
           </a>
         </div>
-        <span className={style.like}>{likes}</span>
+        <button
+          className={classnames(style.like, {
+            [style.likeActive]: likedByUser,
+          })}
+          type="button"
+          onClick={this.handleClick}
+        >
+          {likes}
+        </button>
       </div>
     );
   }
 }
 
-export default GalleryItem;
+const mapDispatchToProps = {
+  fetchLike,
+  fetchUnlike,
+};
+
+export default connect(undefined, mapDispatchToProps)(GalleryItem);
