@@ -18,6 +18,39 @@
   max-width: 200px;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.userLink {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  color: #eeaf4b;
+}
+
+.userName::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15px;
+  width: 1px;
+  height: 15px;
+  background-color: #eeaf4b;
+}
+
+.userImage {
+  margin-right: 8px;
+  border-radius: 100%;
+  max-width: 40px;
+}
+
+.logout {
+  color: #eeaf4b;
+}
+
 .login {
   color: #fff;
 }
