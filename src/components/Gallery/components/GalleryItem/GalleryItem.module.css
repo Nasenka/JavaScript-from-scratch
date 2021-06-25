@@ -84,12 +84,12 @@
   cursor: pointer;
 }
 
-.likeActive {
+.like.active {
   color: #eeaf4b;
   opacity: 1;
 }
 
-.likeActive::before {
+.like.active::before {
   background-image: url("../../../../assets/image/like.svg");
 }
 

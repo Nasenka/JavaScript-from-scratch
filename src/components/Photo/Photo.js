@@ -1,8 +1,9 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchPhoto } from '../../actions/photo';
+import { fetchLike, fetchPhoto, fetchUnlike } from '../../actions/photo';
 
 import style from './Photo.module.css';
 import RelatedCollection from './components/RelatedCollection';
@@ -10,6 +11,8 @@ import RelatedCollection from './components/RelatedCollection';
 class Photo extends React.PureComponent {
   static propTypes = {
     fetchPhoto: PropTypes.func.isRequired,
+    fetchLike: PropTypes.func.isRequired,
+    fetchUnlike: PropTypes.func.isRequired,
 
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -25,7 +28,9 @@ class Photo extends React.PureComponent {
         model: PropTypes.string,
       }),
       height: PropTypes.number,
+      id: PropTypes.string,
       likes: PropTypes.number,
+      liked_by_user: PropTypes.bool,
       related_collections: PropTypes.shape({
         results: PropTypes.arrayOf(
           PropTypes.shape({
@@ -87,8 +92,18 @@ class Photo extends React.PureComponent {
     fetchPhoto(match.params.id);
   }
 
-  handleClick = () => {
+  handleBack = () => {
     window.history.back();
+  };
+
+  handleLike = async () => {
+    const { photo, fetchLike, fetchUnlike } = this.props;
+
+    if (photo.liked_by_user) {
+      fetchUnlike(photo.id);
+    } else {
+      fetchLike(photo.id);
+    }
   };
 
   renderDimensions() {
@@ -195,9 +210,11 @@ class Photo extends React.PureComponent {
               </span>
             </a>
             <button
-              aria-label="Поставить лайк"
-              className={style.like}
+              className={classnames(style.like, {
+                [style.active]: photo.liked_by_user,
+              })}
               type="button"
+              onClick={this.handleLike}
             >
               {photo.likes}
             </button>
@@ -223,7 +240,7 @@ class Photo extends React.PureComponent {
           aria-label="Назад"
           className={style.back}
           type="button"
-          onClick={this.handleClick}
+          onClick={this.handleBack}
         />
       </>
     );
@@ -238,6 +255,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   fetchPhoto,
+  fetchLike,
+  fetchUnlike,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Photo);

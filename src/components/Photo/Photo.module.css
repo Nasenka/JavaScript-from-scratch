@@ -69,12 +69,20 @@
   margin-right: 5px;
   width: 22px;
   height: 22px;
-  background: url("../../assets/image/dislike1.svg") no-repeat;
+  background: url("../../assets/image/unlikePhoto.svg") no-repeat;
   background-size: contain;
 }
 
 .like:hover {
   cursor: pointer;
+}
+
+.like.active {
+  color: #eeaf4b;
+}
+
+.like.active::before {
+  background-image: url("../../../src/assets/image/like.svg");
 }
 
 .details {
