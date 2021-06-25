@@ -73,7 +73,7 @@ class GalleryItem extends React.PureComponent {
         </div>
         <button
           className={classnames(style.like, {
-            [style.likeActive]: likedByUser,
+            [style.active]: likedByUser,
           })}
           type="button"
           onClick={this.handleClick}
