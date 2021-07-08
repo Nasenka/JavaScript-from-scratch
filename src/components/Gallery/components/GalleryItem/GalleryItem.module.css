@@ -61,36 +61,16 @@
   right: 10px;
   bottom: 10px;
   display: none;
-  border: none;
-  color: #fff;
-  background: none;
   opacity: 0.8;
   transition: opacity 0.5s ease;
 }
 
-.like::before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-  width: 16px;
-  height: 16px;
-  background: url("../../../../assets/image/unlike.svg") no-repeat;
-  background-size: contain;
-}
-
 .like:hover {
   opacity: 1;
-  cursor: pointer;
 }
 
 .like.active {
-  color: #eeaf4b;
   opacity: 1;
-}
-
-.like.active::before {
-  background-image: url("../../../../assets/image/like.svg");
 }
 
 .galleryItem:hover .image {
@@ -102,5 +82,5 @@
 }
 
 .galleryItem:hover .like {
-  display: block;
+  display: flex;
 }
