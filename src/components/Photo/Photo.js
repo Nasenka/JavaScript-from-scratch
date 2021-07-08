@@ -1,9 +1,9 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchLike, fetchPhoto, fetchUnlike } from '../../actions/photo';
+import LikeButton from '../LikeButton/LikeButton';
 
 import style from './Photo.module.css';
 import RelatedCollection from './components/RelatedCollection';
@@ -209,15 +209,13 @@ class Photo extends React.PureComponent {
                 </span>
               </span>
             </a>
-            <button
-              className={classnames(style.like, {
-                [style.active]: photo.liked_by_user,
-              })}
-              type="button"
+            <LikeButton
+              className={style.like}
+              likedByUser={photo.liked_by_user}
+              likes={photo.likes}
+              typeButton="blue"
               onClick={this.handleLike}
-            >
-              {photo.likes}
-            </button>
+            />
             <div className={style.details}>
               {this.renderDimensions()}
               {this.renderCamera()}

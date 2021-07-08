@@ -1,0 +1,53 @@
+.like {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.like::before {
+  content: "";
+  display: block;
+  margin-right: 5px;
+}
+
+.like:hover {
+  cursor: pointer;
+}
+
+.like.white {
+  font-size: 13px;
+  color: #fff;
+}
+
+.like.white::before {
+  width: 16px;
+  height: 16px;
+  background: url("../../assets/image/unlike.svg") no-repeat;
+  background-size: contain;
+}
+
+.like.blue {
+  font-size: 22px;
+  color: #3a669c;
+}
+
+.like.blue::before {
+  width: 22px;
+  height: 22px;
+  background: url("../../assets/image/unlikePhoto.svg") no-repeat;
+  background-size: contain;
+}
+
+.like.active {
+  color: #eeaf4b;
+}
+
+.like.active::before {
+  background-image: url("../../assets/image/like.svg");
+}
+
+.like[disabled] {
+  cursor: text;
+}

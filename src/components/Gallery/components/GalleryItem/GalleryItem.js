@@ -1,10 +1,10 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchLike, fetchUnlike } from '../../../../actions/gallery';
+import LikeButton from '../../../LikeButton/LikeButton';
 
 import style from './GalleryItem.module.css';
 
@@ -71,15 +71,13 @@ class GalleryItem extends React.PureComponent {
             </span>
           </a>
         </div>
-        <button
-          className={classnames(style.like, {
-            [style.active]: likedByUser,
-          })}
-          type="button"
+        <LikeButton
+          className={style.like}
+          likedByUser={likedByUser}
+          likes={likes}
+          typeButton="white"
           onClick={this.handleClick}
-        >
-          {likes}
-        </button>
+        />
       </div>
     );
   }
