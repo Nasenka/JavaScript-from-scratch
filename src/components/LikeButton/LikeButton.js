@@ -16,7 +16,7 @@ class LikeButton extends React.PureComponent {
   };
 
   static defaultProps = {
-    className: '',
+    className: undefined,
     likedByUser: false,
     likes: 0,
     typeButton: '',

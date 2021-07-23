@@ -1,0 +1,80 @@
+.header {
+  margin-bottom: 50px;
+  padding: 15px 0;
+  box-shadow: 0 0 10px #133865;
+  color: #eeaf4b;
+  background: #3a669c;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  max-width: 200px;
+}
+
+.user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  line-height: 1;
+}
+
+.userImage {
+  z-index: 10;
+  margin-left: auto;
+  border-radius: 100%;
+  max-width: 40px;
+  cursor: pointer;
+}
+
+.userMenu {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  width: 175px;
+  box-shadow: 0 0 10px #133865;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.userLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(134, 167, 205, 0.3);
+  padding: 0 48px 10px 0;
+  min-height: 40px;
+  font-size: 14px;
+  color: #3a669c;
+}
+
+.user:hover .userMenu {
+  opacity: 1;
+}
+
+.logout {
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  color: #3a669c;
+  background: none;
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: #eeaf4b;
+}
+
+.login {
+  color: #fff;
+}
