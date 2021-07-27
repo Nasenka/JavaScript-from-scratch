@@ -1,0 +1,14 @@
+.footer {
+  padding: 20px 0;
+  background: #133865;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyright,
+.contacts {
+  color: #fff;
+}
