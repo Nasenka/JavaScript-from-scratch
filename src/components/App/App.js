@@ -6,6 +6,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { fetchUser } from '../../actions/user';
 import Auth from '../Auth';
 import Container from '../Container';
+import Footer from '../Footer/Footer';
 import Gallery from '../Gallery';
 import Header from '../Header';
 import Photo from '../Photo';
@@ -42,6 +43,7 @@ class App extends React.PureComponent {
               </Switch>
             </Container>
           </main>
+          <Footer />
         </>
       </Router>
     );
