@@ -34,3 +34,7 @@ a {
 a:hover {
   color: #eeaf4b;
 }
+
+main {
+  margin-bottom: 50px;
+}

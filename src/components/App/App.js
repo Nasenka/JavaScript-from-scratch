@@ -5,10 +5,9 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { fetchUser } from '../../actions/user';
 import Auth from '../Auth';
-import Container from '../Container';
-import Footer from '../Footer/Footer';
 import Gallery from '../Gallery';
-import Header from '../Header';
+import Layout from '../Layout';
+import NotFound from '../NotFound';
 import Photo from '../Photo';
 
 class App extends React.PureComponent {
@@ -28,22 +27,25 @@ class App extends React.PureComponent {
     return (
       <Router>
         <>
-          <Header />
-          <main>
-            <Container>
-              <Switch>
-                <Route exact path="/">
-                  <Gallery />
-                  <Auth />
-                </Route>
-                <Route component={Photo} path="/photos/:id" />
-                <Route>
-                  <h2>Сыр не найден</h2>
-                </Route>
-              </Switch>
-            </Container>
-          </main>
-          <Footer />
+          <Switch>
+            <Route exact path="/">
+              <Layout>
+                <Gallery />
+                <Auth />
+              </Layout>
+            </Route>
+            <Route
+              path="/photos/:id"
+              render={({ match }) => (
+                <Layout>
+                  <Photo match={match} />
+                </Layout>
+              )}
+            />
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
         </>
       </Router>
     );
