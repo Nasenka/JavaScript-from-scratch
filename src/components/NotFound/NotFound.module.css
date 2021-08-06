@@ -1,0 +1,39 @@
+.container {
+  text-align: center;
+}
+
+.images {
+  margin: 150px 0 50px;
+}
+
+.images img {
+  height: 300px;
+}
+
+h1,
+h2 {
+  line-height: 1;
+  color: #eeaf4b;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 80px;
+}
+
+h2 {
+  margin: 0 0 30px;
+  font-size: 50px;
+}
+
+.back {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 15px 20px;
+  box-shadow: 0 0 10px rgba(19, 56, 101, 0.5);
+  transition: background 0.5s ease;
+}
+
+.back:hover {
+  background-color: #3a669c;
+}

@@ -67,6 +67,7 @@ module.exports = {
       'warn',
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-sort-props': [
       'warn',
       {
