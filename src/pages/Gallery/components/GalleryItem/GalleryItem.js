@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchLike, fetchUnlike } from '../../../../actions/gallery';
-import LikeButton from '../../../LikeButton/LikeButton';
+import LikeButton from '../../../../components/LikeButton/LikeButton';
 
 import style from './GalleryItem.module.css';
 
