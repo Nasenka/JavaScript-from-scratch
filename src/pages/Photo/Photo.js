@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchLike, fetchPhoto, fetchUnlike } from '../../actions/photo';
-import LikeButton from '../LikeButton/LikeButton';
+import LikeButton from '../../components/LikeButton/LikeButton';
 
 import style from './Photo.module.css';
 import RelatedCollection from './components/RelatedCollection';

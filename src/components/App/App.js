@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { fetchUser } from '../../actions/user';
-import Auth from '../Auth';
-import Gallery from '../Gallery';
+import Auth from '../../pages/Auth';
+import Gallery from '../../pages/Gallery';
+import NotFound from '../../pages/NotFound';
+import Photo from '../../pages/Photo';
 import Layout from '../Layout';
-import NotFound from '../NotFound';
-import Photo from '../Photo';
 
 class App extends React.PureComponent {
   static propTypes = {
