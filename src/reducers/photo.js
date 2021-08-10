@@ -24,21 +24,17 @@ export default function photo(state = initialState, action) {
     }
 
     case SET_PHOTO_LIKE: {
-      const newPhoto = { ...state };
-
       return {
-        ...newPhoto,
-        likes: newPhoto.likes + 1,
+        ...state,
+        likes: state.likes + 1,
         liked_by_user: true,
       };
     }
 
     case SET_PHOTO_UNLIKE: {
-      const newPhoto = { ...state };
-
       return {
-        ...newPhoto,
-        likes: newPhoto.likes - 1,
+        ...state,
+        likes: state.likes - 1,
         liked_by_user: false,
       };
     }

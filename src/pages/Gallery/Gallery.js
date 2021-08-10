@@ -37,10 +37,18 @@ class Gallery extends React.PureComponent {
   };
 
   componentDidMount() {
+    const { fetchGallery, gallery } = this.props;
+
+    if (gallery[0].length === 0) {
+      fetchGallery();
+    }
+  }
+
+  handleClick = () => {
     const { fetchGallery } = this.props;
 
     fetchGallery();
-  }
+  };
 
   renderGallery(column) {
     const { gallery } = this.props;
@@ -77,7 +85,7 @@ class Gallery extends React.PureComponent {
             );
           })}
         </div>
-        <button className={style.more} type="button">
+        <button className={style.more} type="button" onClick={this.handleClick}>
           Загрузить еще
         </button>
       </>
@@ -89,7 +97,7 @@ const mapStateToProps = state => {
   const newGallery = [[], [], []];
   let currentColumn = 0;
 
-  state.gallery.forEach(item => {
+  state.gallery.data.forEach(item => {
     newGallery[currentColumn].push(item);
     currentColumn = currentColumn === 2 ? 0 : currentColumn + 1;
   });

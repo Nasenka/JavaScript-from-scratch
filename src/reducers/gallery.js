@@ -4,14 +4,23 @@ import {
   SET_GALLERY_UNLIKE,
 } from '../actions/constants';
 
-export default function gallery(state = [], action) {
+const initialState = {
+  data: [],
+  page: 1,
+};
+
+export default function gallery(state = initialState, action) {
   switch (action.type) {
     case SET_GALLERY: {
-      return [...action.data];
+      return {
+        ...state,
+        data: [...state.data, ...action.data],
+        page: state.page + 1,
+      };
     }
 
     case SET_GALLERY_LIKE: {
-      const newGallery = [...state];
+      const newGallery = [...state.data];
 
       const photoIndex = newGallery.findIndex(item => item.id === action.id);
 
@@ -23,11 +32,11 @@ export default function gallery(state = [], action) {
         liked_by_user: true,
       });
 
-      return newGallery;
+      return { ...state, data: newGallery };
     }
 
     case SET_GALLERY_UNLIKE: {
-      const newGallery = [...state];
+      const newGallery = [...state.data];
 
       const photoIndex = newGallery.findIndex(item => item.id === action.id);
 
@@ -39,7 +48,7 @@ export default function gallery(state = [], action) {
         liked_by_user: false,
       });
 
-      return newGallery;
+      return { ...state, data: newGallery };
     }
 
     default:
