@@ -26,8 +26,12 @@ const setUnlike = id => {
 };
 
 export const fetchGallery = () => {
-  return async dispatch => {
-    const response = await unsplash.search.photos('cheese', 1, 18);
+  return async (dispatch, getState) => {
+    const response = await unsplash.search.photos(
+      'cheese',
+      getState().gallery.page,
+      18,
+    );
     const { results } = await toJson(response);
 
     dispatch(setGallery(results));
