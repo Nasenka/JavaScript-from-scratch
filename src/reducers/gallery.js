@@ -7,6 +7,7 @@ import {
 const initialState = {
   data: [],
   page: 1,
+  totalPages: 1,
 };
 
 export default function gallery(state = initialState, action) {
@@ -16,6 +17,7 @@ export default function gallery(state = initialState, action) {
         ...state,
         data: [...state.data, ...action.data],
         page: state.page + 1,
+        totalPages: action.totalPages,
       };
     }
 

@@ -4,9 +4,10 @@ import unsplash from '../unsplash';
 
 import { SET_GALLERY, SET_GALLERY_LIKE, SET_GALLERY_UNLIKE } from './constants';
 
-const setGallery = data => {
+const setGallery = (data, totalPages) => {
   return {
     data,
+    totalPages,
     type: SET_GALLERY,
   };
 };
@@ -32,9 +33,9 @@ export const fetchGallery = () => {
       getState().gallery.page,
       18,
     );
-    const { results } = await toJson(response);
+    const { results, total_pages: totalPages } = await toJson(response);
 
-    dispatch(setGallery(results));
+    dispatch(setGallery(results, totalPages));
   };
 };
 

@@ -34,7 +34,13 @@ class Gallery extends React.PureComponent {
     ).isRequired,
 
     fetchGallery: PropTypes.func.isRequired,
+    page: PropTypes.number.isRequired,
+    totalPages: PropTypes.number.isRequired,
   };
+
+  myRef = React.createRef();
+
+  block = false;
 
   componentDidMount() {
     const { fetchGallery, gallery } = this.props;
@@ -42,7 +48,28 @@ class Gallery extends React.PureComponent {
     if (gallery[0].length === 0) {
       fetchGallery();
     }
+
+    window.addEventListener('scroll', this.handleScroll);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const currentRef = this.myRef.current;
+    const { innerHeight, pageYOffset } = window;
+    const { clientHeight } = currentRef;
+    const { fetchGallery } = this.props;
+
+    if (innerHeight + pageYOffset >= clientHeight - 400 && !this.block) {
+      fetchGallery();
+
+      this.block = true;
+    } else if (innerHeight + pageYOffset < clientHeight - 400) {
+      this.block = false;
+    }
+  };
 
   handleClick = () => {
     const { fetchGallery } = this.props;
@@ -71,12 +98,26 @@ class Gallery extends React.PureComponent {
     });
   }
 
+  renderButton() {
+    const { page, totalPages } = this.props;
+
+    if (page < totalPages) {
+      return (
+        <button className={style.more} type="button" onClick={this.handleClick}>
+          Загрузить еще
+        </button>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const { gallery } = this.props;
 
     return (
       <>
-        <div className={style.gallery}>
+        <div ref={this.myRef} className={style.gallery}>
           {gallery.map((item, index) => {
             return (
               <div key={index} className={style.row}>
@@ -85,9 +126,7 @@ class Gallery extends React.PureComponent {
             );
           })}
         </div>
-        <button className={style.more} type="button" onClick={this.handleClick}>
-          Загрузить еще
-        </button>
+        {this.renderButton()}
       </>
     );
   }
@@ -104,6 +143,8 @@ const mapStateToProps = state => {
 
   return {
     gallery: newGallery,
+    page: state.gallery.page,
+    totalPages: state.gallery.totalPages,
   };
 };
 
