@@ -38,9 +38,9 @@ class Gallery extends React.PureComponent {
     totalPages: PropTypes.number.isRequired,
   };
 
-  myRef = React.createRef();
+  gallery = React.createRef();
 
-  block = false;
+  isFetchBlocked = false;
 
   componentDidMount() {
     const { fetchGallery, gallery } = this.props;
@@ -57,17 +57,17 @@ class Gallery extends React.PureComponent {
   }
 
   handleScroll = () => {
-    const currentRef = this.myRef.current;
     const { innerHeight, pageYOffset } = window;
-    const { clientHeight } = currentRef;
+    const { clientHeight } = this.gallery.current;
     const { fetchGallery } = this.props;
 
-    if (innerHeight + pageYOffset >= clientHeight - 400 && !this.block) {
-      fetchGallery();
-
-      this.block = true;
-    } else if (innerHeight + pageYOffset < clientHeight - 400) {
-      this.block = false;
+    if (innerHeight + pageYOffset >= clientHeight - 400) {
+      if (!this.isFetchBlocked) {
+        fetchGallery();
+        this.isFetchBlocked = true;
+      }
+    } else {
+      this.isFetchBlocked = false;
     }
   };
 
@@ -117,7 +117,7 @@ class Gallery extends React.PureComponent {
 
     return (
       <>
-        <div ref={this.myRef} className={style.gallery}>
+        <div ref={this.gallery} className={style.gallery}>
           {gallery.map((item, index) => {
             return (
               <div key={index} className={style.row}>
