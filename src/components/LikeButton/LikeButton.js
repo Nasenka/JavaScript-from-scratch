@@ -35,7 +35,7 @@ class LikeButton extends React.PureComponent {
     return (
       <button
         className={classnames(style.like, className, style[typeButton], {
-          [style.active]: likedByUser,
+          [style.active]: likedByUser && isAuth,
         })}
         disabled={!isAuth}
         title={isAuth ? undefined : 'Авторизуйтесь, чтобы поставить лайк'}
