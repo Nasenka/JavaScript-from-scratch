@@ -36,11 +36,7 @@ class App extends React.PureComponent {
             </Route>
             <Route
               path="/photos/:id"
-              render={({ match }) => (
-                <Layout>
-                  <Photo match={match} />
-                </Layout>
-              )}
+              render={({ match }) => <Photo match={match} />}
             />
             <Route>
               <NotFound />

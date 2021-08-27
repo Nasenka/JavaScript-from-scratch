@@ -3,7 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchLike, fetchPhoto, fetchUnlike } from '../../actions/photo';
+import Layout from '../../components/Layout';
 import LikeButton from '../../components/LikeButton/LikeButton';
+import NotFound from '../NotFound';
 
 import style from './Photo.module.css';
 import RelatedCollection from './components/RelatedCollection';
@@ -83,6 +85,7 @@ class Photo extends React.PureComponent {
       }),
       views: PropTypes.number,
       width: PropTypes.number,
+      errors: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
   };
 
@@ -180,8 +183,16 @@ class Photo extends React.PureComponent {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const creationDate = new Date(photo.created_at);
 
+    if (photo.errors) {
+      return <NotFound />;
+    }
+
+    if (!photo.id) {
+      return null;
+    }
+
     return (
-      <>
+      <Layout>
         <div className={style.photo}>
           <div className={style.photoContainer}>
             <img
@@ -240,7 +251,7 @@ class Photo extends React.PureComponent {
           type="button"
           onClick={this.handleBack}
         />
-      </>
+      </Layout>
     );
   }
 }
