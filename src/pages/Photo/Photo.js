@@ -116,7 +116,12 @@ class Photo extends React.PureComponent {
       return (
         <p className={style.dimensions}>
           <b>Разрешение:</b>{' '}
-          <a href={photo.urls.full} rel="noopener noreferrer" target="_blank">
+          <a
+            href={photo.urls.full}
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Смотреть фото"
+          >
             {photo.width} x {photo.height}
           </a>
         </p>
@@ -241,16 +246,18 @@ class Photo extends React.PureComponent {
             {this.renderTags()}
           </div>
         </div>
-        <h2 className={style.relatedTitle}>Похожие фото</h2>
+        <h2 className={style.relatedTitle}>Похожие коллекции</h2>
         <div className={style.relatedCollections}>
           {this.renderRelatedCollections()}
         </div>
         <button
-          aria-label="Назад"
           className={style.back}
+          title="Назад"
           type="button"
           onClick={this.handleBack}
-        />
+        >
+          Вернуться
+        </button>
       </Layout>
     );
   }

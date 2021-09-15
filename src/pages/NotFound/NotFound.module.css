@@ -37,3 +37,45 @@
 .back:hover {
   background-color: #3a669c;
 }
+
+@media (max-width: 991px) {
+  .images {
+    margin: 50px 0;
+  }
+
+  .images img {
+    height: 200px;
+  }
+
+  .container h1 {
+    font-size: 60px;
+  }
+
+  .container h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .images img {
+    height: 120px;
+  }
+
+  .container h1 {
+    font-size: 40px;
+  }
+
+  .container h2 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 380px) {
+  .images {
+    margin: 50px 0 30px;
+  }
+
+  .images img {
+    height: 90px;
+  }
+}

@@ -21,12 +21,13 @@
   padding: 10px 15px;
   font-size: 18px;
   color: #eeaf4b;
-  background: transparent;
-  transition: background, border 0.5s ease;
+  background: #fff;
+  transition: background, border, box-shadow 0.5s ease;
 }
 
 .more:hover {
-  border-color: #000;
-  background: #000;
+  border-color: #3a669c;
+  box-shadow: 0 0 10px rgba(19, 56, 101, 0.5);
+  color: #3a669c;
   cursor: pointer;
 }

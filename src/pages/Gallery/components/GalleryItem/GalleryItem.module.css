@@ -23,12 +23,14 @@
   margin-right: 8px;
   border-radius: 100%;
   max-width: 40px;
+  max-height: 40px;
 }
 
 .authorInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-right: 10px;
   text-decoration: none;
   color: #fff;
 }
@@ -73,14 +75,20 @@
   opacity: 1;
 }
 
-.galleryItem:hover .image {
+.galleryItem:hover .image,
+.galleryItem:active .image,
+.galleryItem:focus .image {
   filter: brightness(60%);
 }
 
-.galleryItem:hover .author {
+.galleryItem:hover .author,
+.galleryItem:active .author,
+.galleryItem:focus .author {
   display: flex;
 }
 
-.galleryItem:hover .like {
+.galleryItem:hover .like,
+.galleryItem:active .like,
+.galleryItem:focus .like {
   display: flex;
 }

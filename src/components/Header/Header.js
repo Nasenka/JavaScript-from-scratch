@@ -84,8 +84,9 @@ class Header extends React.PureComponent {
     return (
       <header className={style.header}>
         <Container className={style.container}>
-          <Link to="/">
-            <img alt="Сырная лента" className={style.logo} src="/logo.png" />
+          <Link className={style.logo} to="/">
+            <img alt="Сырная лента" className={style.logoImg} src="/logo.png" />
+            <span className={style.lotoText}>Сырная лента</span>
           </Link>
           {this.renderUser()}
         </Container>
