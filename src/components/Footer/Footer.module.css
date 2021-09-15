@@ -12,3 +12,14 @@
 .contacts {
   color: #fff;
 }
+
+@media (max-width: 575px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .copyright {
+    margin-bottom: 10px;
+  }
+}
