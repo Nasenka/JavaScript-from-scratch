@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { fetchLike, fetchUnlike } from '../../../../actions/gallery';
 import LikeButton from '../../../../components/LikeButton/LikeButton';
+import formatDate from '../../../../utils/formatDate';
 
 import style from './GalleryItem.module.css';
 
@@ -49,8 +50,6 @@ class GalleryItem extends React.PureComponent {
       userImage,
       userLink,
     } = this.props;
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const creationDate = new Date(created);
 
     return (
       <div className={style.galleryItem}>
@@ -66,9 +65,7 @@ class GalleryItem extends React.PureComponent {
             target="_blank"
           >
             <span className={style.authorName}>{user}</span>
-            <span className={style.date}>
-              {creationDate.toLocaleDateString('ru-Ru', options)}
-            </span>
+            <span className={style.date}>{formatDate(created)}</span>
           </a>
         </div>
         <LikeButton

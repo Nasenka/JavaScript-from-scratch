@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { toJson } from 'unsplash-js';
 
 import { fetchUser } from '../../actions/user';
+import { BEARERTOKENKEY } from '../../constants';
 import unsplash from '../../unsplash';
 
 class Auth extends React.PureComponent {
@@ -18,7 +19,7 @@ class Auth extends React.PureComponent {
       const response = await unsplash.auth.userAuthentication(code);
       const data = await toJson(response);
 
-      localStorage.setItem('bearerToken', data.access_token);
+      localStorage.setItem(BEARERTOKENKEY, data.access_token);
 
       unsplash.auth.setBearerToken(data.access_token);
 

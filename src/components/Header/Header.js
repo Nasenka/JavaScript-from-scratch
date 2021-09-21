@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { resetUser } from '../../actions/user';
+import { BEARERTOKENKEY } from '../../constants';
 import unsplash from '../../unsplash';
 import Container from '../Container';
 
@@ -33,7 +34,7 @@ class Header extends React.PureComponent {
 
     resetUser();
 
-    localStorage.removeItem('bearerToken');
+    localStorage.removeItem(BEARERTOKENKEY);
   };
 
   renderUser() {
