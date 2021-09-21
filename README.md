@@ -63,4 +63,5 @@ http://javascript.syrenko.ru/
 
 1. Установите зависимости: `yarn`
 2. Запустите приложение `yarn start`
+
 Приложение автоматически откроется по адресу [http://localhost:3000](http://localhost:3000)
