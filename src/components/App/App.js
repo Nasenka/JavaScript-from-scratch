@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { fetchUser } from '../../actions/user';
+import { BEARERTOKENKEY } from '../../constants';
 import Auth from '../../pages/Auth';
 import Gallery from '../../pages/Gallery';
 import NotFound from '../../pages/NotFound';
@@ -18,7 +19,7 @@ class App extends React.PureComponent {
   componentDidMount() {
     const { fetchUser } = this.props;
 
-    if (localStorage.getItem('bearerToken')) {
+    if (localStorage.getItem(BEARERTOKENKEY)) {
       fetchUser();
     }
   }

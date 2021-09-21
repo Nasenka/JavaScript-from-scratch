@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { fetchLike, fetchPhoto, fetchUnlike } from '../../actions/photo';
 import Layout from '../../components/Layout';
 import LikeButton from '../../components/LikeButton/LikeButton';
+import { LOCALE } from '../../constants';
+import formatDate from '../../utils/formatDate';
 import NotFound from '../NotFound';
 
 import style from './Photo.module.css';
@@ -185,8 +187,6 @@ class Photo extends React.PureComponent {
 
   render() {
     const { photo } = this.props;
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const creationDate = new Date(photo.created_at);
 
     if (photo.errors) {
       return <NotFound />;
@@ -236,11 +236,10 @@ class Photo extends React.PureComponent {
               {this.renderDimensions()}
               {this.renderCamera()}
               <p className={style.date}>
-                <b>Создано:</b>{' '}
-                {creationDate.toLocaleDateString('ru-Ru', options)}
+                <b>Создано:</b> {formatDate(photo.created_at)}
               </p>
               <p className={style.views}>
-                <b>Просмотров:</b> {photo.views}
+                <b>Просмотров:</b> {photo.views.toLocaleString(LOCALE)}
               </p>
             </div>
             {this.renderTags()}
